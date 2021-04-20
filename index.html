@@ -75,15 +75,15 @@
       
       function draw() {
         
-        
         hit = collideRectRect(player1.x,player1.y,player2.x,player2.y);
         if (hit == true) { 
-         
+          playerlife-1
         }
       }
        function player1() {
          fill(color('purple'))
          rect(w/2,y/2,50,50);
+         rectMode(CENTER);
          if (keyIsDown(87)) {
            //w
           y = y -= 10
@@ -107,6 +107,9 @@
       
       function player2() {
         fill(color('green'));
+        rect(w/2,y/2,50,50);
+        rectMode(CENTER);
+        playerlife=2;
         if (keyIsDown(80)) {
           //p
           y = y -= 10
