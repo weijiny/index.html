@@ -9,9 +9,11 @@
       }
     </style>
   </head>
-  <body>
+  <body>https://docs.google.com/document/d/1VuwXXy0hXnMQwrXZTdmBe4vN7kKUWWMLcL_rv7nxXbE/edit#
     <h1>Tag!</h1>
     <script>
+      var hit = false;
+      
       var w = window.innerWidth;
       var h = window.innerHeight;
      //players
@@ -53,10 +55,77 @@
         createCanvas(w,h);
         player1 = new player1();
         player2 = new player2();
+        objective1 = new objective1();
+        objective2 = new objective2();
+        obj1 = new obj1();
+        obj2 = new obj2();
+        obj3 = new obj3();
+        obj4 = new obj4();
+        obj5 = new obj5();
+        obj6 = new obj6();
+        obj7 = new obj7();
+        obj8 = new obj8();
+        obj9 = new obj9();
+        obj10 = new ob10j();
+        obj11 = new obj11();
+        obj12 = new obj12();
+        obj13 = new obj13();
+        obj14 = new obj14();
       }
       
       function draw() {
         
+        
+        hit = collideRectRect(player1.x,player1.y,player2.x,player2.y);
+        if (hit == true) { 
+         
+        }
+      }
+       function player1() {
+         fill(color('purple'))
+         rect(w/2,y/2,50,50);
+         if (keyIsDown(87)) {
+           //w
+          y = y -= 10
+        }
+
+        if (keyIsDown(83)) {
+          //s
+          y = y += 10
+        }
+
+        if (keyIsDown(65)) {
+          //a
+          x = x -= 10
+        }
+
+        if (keyIsDown(68)) {
+          //d
+          x = x += 10
+        }
+      }
+      
+      function player2() {
+        fill(color('green'));
+        if (keyIsDown(80)) {
+          //p
+          y = y -= 10
+        }
+
+        if (keyIsDown(186)) {
+          //;
+          y = y += 10
+        }
+
+        if (keyIsDown(76)) {
+          //l
+          x = x -= 10
+        }
+
+        if (keyIsDown(222)) {
+          //'
+          x = x += 10
+        }
       }
       
     </script>
