@@ -1,136 +1,237 @@
 <html>
   <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js"></script>
-    <style>
-      body {
-        margin:0;
-        padding:0;
-      }
-    </style>
+
   </head>
-  <body>https://docs.google.com/document/d/1VuwXXy0hXnMQwrXZTdmBe4vN7kKUWWMLcL_rv7nxXbE/edit#
-    <h1>Tag!</h1>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+    <script src="p5.collide2d.js"></script>
+  
+    <style>
+    body {
+      margin:0;
+      padding:0;
+    }
+    </style>
     <script>
-      var hit = false;
-      
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-     //players
-     //https://photoscissors.com/tutorials/online/how-to-make-transparent-background make image trans
-      var player1 //https://www.jing.fm/iclipt/wwxiib/
-      var player2 //batman
-     //objectives to win for player2
-      var objective1
-      var objective2
-     //objects and walls
-      var obj1
-      var obj2
-      var obj3
-      var obj4
-      var obj5
-      var obj6
-      var obj7
-      var obj7
-      var obj8
-      var obj9
-      var obj10
-      var obj11
-      var obj12
-      var obj13
-      var obj14
-     //announcers
-      var win
-      var lose1
-      var lose2
-      
+
+    var win = false;
+    var hit = false;
+
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+
     var x = w/2;
     var y = h/2;
-      
-      function preload() {
+    var player1;
+    var player2;
+    var objective;
+    var life;
+
+
+    function setup() {
+  createCanvas(w, h);
+  
+  player1 = new player1();
+  player2 = new player2();
+  
+  objective = new objective();
+  life = new life();
+  frameRate(144);
+  
+}
+
+    function draw() {
+
+  clear();
+  player1.show();
+  player1.update();
+  player2.show();
+  player2.update();
+
+  objective.show();
+  objective.update();
+  
+  life.show();
+  life.update();
+}
+  
+
+
+    function player1() {
+    this.x = w/4;
+    this.y = h/2;
+    this.show = function() {
+      fill(color('green'));
+      rect(this.x,this.y,50,50)
+      rectMode(CENTER)
+    }  
+
+    this.update = function() {
+      //movement
+      if (keyIsDown(65)) {
+        this.x = this.x -= 3.53;
+      }
+
+      if (keyIsDown(68)) {
+        this.x = this.x += 3.53;
+      }
+
+      if (keyIsDown(87)) {
+        this.y = this.y -= 3.53;
+      }
+
+      if (keyIsDown(83)) {
+        this.y = this.y += 3.53;
+      }
+
+    //border limit
+      //top
+      if (this.y < 28) {
+        this.y = 28
+      }
+      //bottom
+      if (this.y > h-28) {
+        this.y = h-28
         
       }
-      
-      function setup() {
-        createCanvas(w,h);
-        player1 = new player1();
-        player2 = new player2();
-        objective1 = new objective1();
-        objective2 = new objective2();
-        obj1 = new obj1();
-        obj2 = new obj2();
-        obj3 = new obj3();
-        obj4 = new obj4();
-        obj5 = new obj5();
-        obj6 = new obj6();
-        obj7 = new obj7();
-        obj8 = new obj8();
-        obj9 = new obj9();
-        obj10 = new ob10j();
-        obj11 = new obj11();
-        obj12 = new obj12();
-        obj13 = new obj13();
-        obj14 = new obj14();
+      //left
+      if (this.x < 28) {
+        this.x = 28
       }
-      
-      function draw() {
+      //right
+      if (this.x > w-28) {
+        this.x = w-28
         
-        hit = collideRectRect(player1.x,player1.y,player2.x,player2.y);
-        if (hit == true) { 
-          playerlife-1
-        }
       }
-       function player1() {
-         fill(color('purple'))
-         rect(w/2,y/2,50,50);
-         rectMode(CENTER);
-         if (keyIsDown(87)) {
-           //w
-          y = y -= 10
-        }
+    }
+  
+}
 
-        if (keyIsDown(83)) {
-          //s
-          y = y += 10
-        }
+    function player2() {
+    this.x = 3*w/4;
+    this.y = h/2;
+    this.show = function() {
+      fill(color('purple'));
+      rect(this.x,this.y,50,50)
+    }    
 
-        if (keyIsDown(65)) {
-          //a
-          x = x -= 10
-        }
-
-        if (keyIsDown(68)) {
-          //d
-          x = x += 10
-        }
+    this.update = function() {
+      if (keyIsDown(80)) {
+          //p
+        this.y -= 3.5
       }
-      
-      function player2() {
-        fill(color('green'));
-        rect(w/2,y/2,50,50);
-        rectMode(CENTER);
-        playerlife=2;
+
+     if (keyIsDown(186)) {
+          //;
+        this.y += 3.5
+     }
+
+     if (keyIsDown(76)) {
+          //l
+        this.x -= 3.5
+     }
+
+     if (keyIsDown(222)) {
+          //'
+        this.x += 3.5
+     }
+
+     //border limit
+     if (this.y < 28) {
+        this.y = 28
+      }
+      //bottom
+      if (this.y > h-28) {
+        this.y = h-28
+        
+      }
+      //left
+      if (this.x < 28) {
+        this.x = 28
+      }
+      //right
+      if (this.x > w-28) {
+        this.x = w-28
+        
+      }
+    }
+  
+}
+
+    function life() {
+      this.x = 3*w/4;
+      this.y = h/2;
+      this.show = function() {
+        fill(color('purple'));
+        rect(this.x,this.y,50,50)
+      }
+
+      this.update = function() {
+
+        hit = collideRectRect(player1.x,player1.y,50,50,life.x,life.y,50,50);
+
         if (keyIsDown(80)) {
           //p
-          y = y -= 10
+          this.y -= 3.5
         }
 
         if (keyIsDown(186)) {
           //;
-          y = y += 10
+          this.y += 3.5
         }
 
         if (keyIsDown(76)) {
           //l
-          x = x -= 10
+          this.x -= 3.5
         }
 
         if (keyIsDown(222)) {
           //'
-          x = x += 10
+          this.x += 3.5
+        }
+
+     //border limit
+        if (this.y < 28) {
+          this.y = 28
+        }
+      //bottom
+        if (this.y > h-28) {
+          this.y = h-28
+        }
+      //left
+        if (this.x < 28) {
+          this.x = 28
+        }
+      //right
+        if (this.x > w-28) {
+          this.x = w-28
+        }
+      
+        lifepoint = 2;
+
+        if (hit == true) {
+          location.href = "congrats.html";
         }
       }
       
+}
+
+    function objective() {
+      this.x = 26;
+      this.y = h/2;
+      this.show = function() {
+        fill(color('blue'));
+        rect(this.x,this.y,50,200);
+      }
+
+      this.update = function() {
+        win = collideRectRect(life.x,life.y,50,50,this.x,410,50,200);
+          if (win == true) {
+            location.href = "congrats2.html";
+          }
+      }
+    }
+
     </script>
   </body>
 </html>
