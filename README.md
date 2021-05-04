@@ -4,24 +4,24 @@ BETA
 
 The goal of the game is for Green to catch Purple, while Purple tries to escape from Green.
 
-Control for GREEN
+**Control for GREEN**
 
 
-W - move upward
+**W** - move upward
 
-A - move leftward
+**A** - move leftward
 
-S - move downward
+**S** - move downward
 
-D - move rightward
+**D** - move rightward
 
-Control for PURPLE
+**Control for PURPLE**
 
 
-P - mov upward
+**P** - mov upward
 
-L - move leftward
+**L** - move leftward
 
-; - move downward
+**;** - move downward
 
-' - move rightward
+**'** - move rightward
