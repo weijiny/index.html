@@ -26,7 +26,12 @@
     var player2;
     var objective;
     var life;
-
+      
+    var wall1;
+    var wall2;
+    var wall3;
+    var wall4;
+    
 
     function setup() {
   createCanvas(w, h);
@@ -36,6 +41,8 @@
   
   objective = new objective();
   life = new life();
+      
+  wall1 = new wall1();
   frameRate(144);
   
 }
@@ -53,6 +60,8 @@
   
   life.show();
   life.update();
+      
+  wall1.show()
 }
   
 
@@ -231,7 +240,14 @@
           }
       }
     }
-
+    
+    function wall1() {
+      this.x = 100
+      this.y = 110
+      this.show = function() {
+        fill(color('black'));
+        rect(this.x,this.y,8,150)
+    }
     </script>
   </body>
 </html>
