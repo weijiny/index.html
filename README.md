@@ -25,3 +25,10 @@ The goal of the game is for Green to catch Purple, while Purple tries to escape 
 **;** - move downward
 
 **'** - move rightward
+
+
+
+//note
+https://editor.p5js.org/mbardin/sketches/rDwJbJwit
+
+https://p5js.org/reference/#/p5/constrain
